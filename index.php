@@ -8,12 +8,15 @@ require('config.php');
 require('./src/classes/bootstrap.php');
 require('./src/classes/controller.php');
 require('./src/classes/model.php');
+require('./src/classes/remember.php');
 
 require('./src/controllers/home.php');
 require('./src/controllers/lists.php');
+require('./src/controllers/users.php');
 
 require('./src/models/home.php');
 require('./src/models/lists.php');
+require('./src/models/users.php');
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', $uri);

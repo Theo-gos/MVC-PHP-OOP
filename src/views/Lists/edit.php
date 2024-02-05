@@ -3,14 +3,14 @@
         <h3 class="text-3xl font-semibold">Your To Do</h3>
     </div>
 
-    <form class="w-full max-w-lg mx-auto" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <form class="w-full max-w-lg mx-auto form" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
         <div class="flex flex-wrap -mx-3 mb-6 justify-between">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 flex-grow">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="title">
                     Title
                 </label>
                 <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="title" id="title" type="text" value="<?php echo $viewmodel['title']; ?>">
-                <p class="text-red-500 text-xs italic hidden">Please fill out this field.</p>
+                <p class="error-p text-red-500 text-xs italic hidden"></p>
             </div>
 
             <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -37,6 +37,7 @@
                     Description
                 </label>
                 <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48" name="desc" id="desc"><?php echo $viewmodel['description']; ?></textarea>
+                <p class="error-p text-red-500 text-xs italic hidden"></p>
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-2">
@@ -45,6 +46,7 @@
                     Due Date
                 </label>
                 <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="due" id="due" type="date" require value="<?php echo $viewmodel['duedate']; ?>">
+                <p class="error-p text-red-500 text-xs italic hidden"></p>
             </div>
         </div>
         <div class="flex justify-end mt-4">
