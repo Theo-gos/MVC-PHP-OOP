@@ -3,9 +3,12 @@ class ListModel extends Model
 {
     public function index()
     {
-        $this->query('SELECT * FROM todoitems');
-        $rows = $this->fetchAll();
-        return $rows;
+        if (isset($_SESSION['is_logged_in'])) {
+            $this->query('SELECT * FROM todoitems WHERE user_id = :user_id');
+            $this->bind(':user_id', $_SESSION['userData']['id']);
+            $rows = $this->fetchAll();
+            return $rows;
+        }
     }
 
     public function add()
@@ -20,7 +23,8 @@ class ListModel extends Model
                 return;
             }
 
-            $this->query('INSERT INTO todoitems (title, description, priority, duedate) VALUES (:title, :description, :priority, :duedate)');
+            $this->query('INSERT INTO todoitems (user_id, title, description, priority, duedate) VALUES (:user_id, :title, :description, :priority, :duedate)');
+            $this->bind(':user_id', $_SESSION['userData']['id']);
             $this->bind(':title', $_POST['title']);
             $this->bind(':description', $_POST['desc']);
             $this->bind(':priority', $_POST['prio']);
