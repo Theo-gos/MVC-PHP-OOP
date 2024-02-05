@@ -90,11 +90,11 @@ class ListModel extends Model
         } else {
             if ($_GET['id'] != NULL || $_GET['id'] != '') {
                 // Fetch post using GET parameter value
-                $this->query('SELECT count(*) FROM todoitems WHERE id = :id');
+                $this->query('SELECT * FROM todoitems WHERE id = :id');
                 $this->bind(':id', $_GET['id']);
-                $row = $this->countSet();
-                if ($row > 0) {
-                    return $_GET['id'];
+                $row =  $this->fetchOne();
+                if ($row) {
+                    return $row;
                 } else {
                     header('Location: ' . ROOT_PATH . 'lists');
                 }
